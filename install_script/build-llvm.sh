@@ -11,8 +11,8 @@ sudo apt install -y build-essential cmake ninja-build python3 \
                     libtinfo-dev curl git lld clang
 
 # 设置安装路径和构建目录
-INSTALL_DIR="${HOME}/tools/llvm"
-BUILD_DIR="${HOME}/source/llvm-project"
+INSTALL_DIR="${HOME}/Llvm/tools/"
+BUILD_DIR="${HOME}/Llvm/source/"
 
 echo "Installation Directory: $INSTALL_DIR"
 echo "Build Directory: $BUILD_DIR"
