@@ -26,7 +26,7 @@ cd "${HOME}/source"
 # 克隆LLVM源码（如果不存在则克隆）
 if [ ! -d "llvm-project" ]; then
   echo "Cloning LLVM repository..."
-  git clone https://github.com/llvm/llvm-project.git
+  git clone git@github.com:llvm/llvm-project.git
 else
   echo "LLVM repository already exists, pulling latest changes..."
   cd llvm-project && git pull && cd ..
@@ -37,15 +37,15 @@ mkdir -p "${BUILD_DIR}/build"
 cd "${BUILD_DIR}/build"
 
 # 配置 CMake
-cmake -G Ninja \
-  -DCMAKE_BUILD_TYPE="DEBUG" \
-  -DCMAKE_INSTALL_PREFIX="$INSTALL_DIR" \
-  -DCMAKE_C_COMPILER=clang \
-  -DCMAKE_CXX_COMPILER=clang++ \
-  -DLLVM_ENABLE_PROJECTS="clang;lld;compiler-rt" \
-  -DLLVM_USE_LINKER=lld \
-  -DLLVM_TARGETS_TO_BUILD="X86" \
-  ../llvm
+cmake -G Ninja ../../llvm-project/llvm \
+    -DLLVM_TARGETS_TO_BUILD="X86;AArch64" \
+    -DCMAKE_BUILD_TYPE="DEBUG" \
+    -DLLVM_ENABLE_ASSERTIONS=ON \
+    -DCMAKE_C_COMPILER=clang \
+    -DCMAKE_CXX_COMPILER=clang++ \
+    -DLLVM_ENABLE_PROJECTS="clang;lld;compiler-rt" \
+    -DLLVM_USE_LINKER=lld \
+    -DCMAKE_INSTALL_PREFIX="$INSTALL_DIR"
 
 # 编译LLVM及Clang
 echo "Building LLVM and Clang with LTO support... This may take a while."
