@@ -9,8 +9,8 @@ sudo apt-get update
 sudo apt-get install -y build-essential libgmp-dev libmpfr-dev libmpc-dev flex bison libisl-dev
 
 # 定义版本和路径
-BINUTILS_VERSION="2.34"
-GCC_VERSION="9.4.0"
+BINUTILS_VERSION="2.37"
+GCC_VERSION="13.2.0"
 INSTALL_DIR="$HOME/tools"
 SOURCE_DIR="$HOME/source"
 
@@ -71,6 +71,7 @@ echo "配置 gcc..."
 CFLAGS="-g -O0" CXXFLAGS="-g -O0" ../configure \
 	--prefix="$INSTALL_DIR/gcc-$GCC_VERSION" \
 	--disable-multilib \
+    --enable-languages=c,c++,go \
 	--with-ld="${SOURCE_DIR}/binutils-${BINUTILS_VERSION}/build/ld/ld-new" \
 	--with-as="${SOURCE_DIR}/binutils-${BINUTILS_VERSION}/build/gas/as-new"
 
