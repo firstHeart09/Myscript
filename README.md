@@ -1,2 +1,2 @@
-# Myscript
-各种shell脚本以及python脚本
+# MyScript
+这是我在ubuntu上使用的脚本代码
