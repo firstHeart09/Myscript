@@ -71,6 +71,31 @@ sudo groupdel docker
 
 # docker网速不好，下载不下来东西怎么办
 # 参考链接：https://blog.csdn.net/Fengdf666/article/details/140236208
+# 在/etc/docker/daemon.json中添加以下内容
+{
+	"registry-mirrors": [
+		"https://2a6bf1988cb6428c877f723ec7530dbc.mirror.swr.myhuaweicloud.com",
+		"https://docker.m.daocloud.io",
+		"https://hub-mirror.c.163.com",
+		"https://mirror.baidubce.com",
+		"https://your_preferred_mirror",
+		"https://dockerhub.icu",
+		"https://docker.registry.cyou",
+		"https://docker-cf.registry.cyou",
+		"https://dockercf.jsdelivr.fyi",
+		"https://docker.jsdelivr.fyi",
+		"https://dockertest.jsdelivr.fyi",
+		"https://mirror.aliyuncs.com",
+		"https://dockerproxy.com",
+		"https://mirror.baidubce.com",
+		"https://docker.m.daocloud.io",
+		"https://docker.nju.edu.cn",
+		"https://docker.mirrors.sjtug.sjtu.edu.cn",
+		"https://docker.mirrors.ustc.edu.cn",
+		"https://mirror.iscas.ac.cn",
+		"https://docker.rainbond.cc"
+	]
+}
 
 
 # 跨平台支持教程
