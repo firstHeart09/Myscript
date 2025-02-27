@@ -33,6 +33,8 @@ docker run --rm hello-world
 docker pull ubuntu:latest
 # 基于拉取的镜像创建一个新的容器
 docker run -it --name my_ubuntu_container ubuntu:latest /bin/bash
+# 挂载宿主机的目录到容器中
+docker run -it --privileged --name my_container -v /path/on/host:/path/in/container ubuntu:latest /bin/bash
 # 重新启动容器
 docker start 容器id（可通过docker ps -a查看）
 # 进入容器
@@ -43,6 +45,10 @@ docker rename 容器名  新容器名
 docker stop my_ubuntu_container
 # 删除容器
 docker rm my_ubuntu_container
+# 从容器复制到宿主机：
+docker cp <容器ID或名称>:<容器内路径> <宿主机路径>
+# 从宿主机复制到容器：
+docker cp <宿主机路径> <容器ID或名称>:<容器内路径>
 
 
 
